@@ -16,8 +16,9 @@ const TicketForm = ({ oldData }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     if (oldData?._id) {
-      const res = await fetch(`/api/tickets/${oldData._id}`, {
+      const res = await fetch(`/api/tickets/${oldData?._id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -35,25 +36,22 @@ const TicketForm = ({ oldData }) => {
         router.push(`/`);
       }
       return;
+    } else {
+      const res = await fetch('/api/tickets', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ formData }),
+      });
+
+      if (!res.ok) {
+        throw new Error('Something went wrong');
+      }
     }
 
-    const res = await fetch('/api/tickets', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ formData }),
-    });
-
-    if (!res.ok) {
-      throw new Error('Something went wrong');
-    }
-
-    if (res.status === 201) {
-      await res.json();
-      router.refresh();
-      router.push(`/`);
-    }
+    router.refresh();
+    router.push(`/`);
   };
 
   useEffect(() => {
@@ -72,7 +70,7 @@ const TicketForm = ({ oldData }) => {
     <div className="flex justify-center w-1/4 mx-auto my-2">
       <form onSubmit={handleSubmit} className="flex flex-col gap-1 w-full">
         <h3 className="text-center">
-          {oldData._id ? 'Update Ticket' : 'Create your ticket'}
+          {oldData?._id ? 'Update Ticket' : 'Create your ticket'}
         </h3>
         <label className="mt-2" htmlFor="title">
           Title
