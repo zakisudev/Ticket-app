@@ -17,9 +17,9 @@ const TicketForm = ({ oldData }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (oldData?._id) {
-      const res = await fetch(`/api/tickets/${oldData?._id}`, {
-        method: 'PUT',
+    if (!oldData?._id || !oldData) {
+      const res = await fetch('/api/tickets', {
+        method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
@@ -29,16 +29,9 @@ const TicketForm = ({ oldData }) => {
       if (!res.ok) {
         throw new Error('Something went wrong');
       }
-
-      if (res.status === 200) {
-        await res.json();
-        router.refresh();
-        router.push(`/`);
-      }
-      return;
     } else {
-      const res = await fetch('/api/tickets', {
-        method: 'POST',
+      const res = await fetch(`/api/tickets/${oldData?._id}`, {
+        method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
         },
