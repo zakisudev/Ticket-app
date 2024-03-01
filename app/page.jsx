@@ -6,9 +6,12 @@ import StatusDisplay from './(components)/StatusDisplay';
 
 const getTickets = async () => {
   try {
-    const res = await fetch(`http://localhost:3000/api/tickets`, {
-      cache: 'no-store',
-    });
+    const res = await fetch(
+      `https://ticket-app-zakisudev.vercel.app/api/tickets`,
+      {
+        cache: 'no-store',
+      }
+    );
 
     if (!res.ok) {
       throw new Error('Failed to fetch tickets');
