@@ -6,6 +6,7 @@ import { useRouter } from 'next/navigation';
 
 const DeleteBlock = ({ id }) => {
   const router = useRouter();
+
   const deleteTicket = async () => {
     try {
       const res = await fetch(`https://tickets.zakisu.tech/api/tickets/${id}`, {
@@ -26,7 +27,7 @@ const DeleteBlock = ({ id }) => {
   return (
     <FontAwesomeIcon
       icon={faX}
-      className="text-red-400 hover:cursor-pointer hover:text-red-200"
+      className="text-red-400 hover:cursor-pointer hover:text-red-200 p-2 z-50"
       onClick={deleteTicket}
     />
   );

@@ -49,7 +49,7 @@ const Dashboard = async () => {
                   <Link
                     href={`/TicketPage/${ticket._id}`}
                     key={ticket._id}
-                    className="flex flex-col bg-card hover:bg-card-hover rounded-md shadow-lg p-3 m-2"
+                    className="flex flex-col bg-card hover:bg-card-hover rounded-md shadow-lg p-3 m-2 z-0"
                   >
                     <div className="flex mb-3">
                       <PriorityDisplay priority={ticket.priority} />
