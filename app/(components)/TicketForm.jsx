@@ -43,8 +43,8 @@ const TicketForm = ({ oldData }) => {
       }
     }
 
-    router.refresh();
     router.push(`/`);
+    router.refresh();
   };
 
   useEffect(() => {
