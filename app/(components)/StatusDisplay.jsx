@@ -1,6 +1,6 @@
 const StatusDisplay = ({ status }) => {
   const getStatus = (status) => {
-    let color = 'bg-gray-400';
+    let color = 'bg-red-400';
     switch (status) {
       case 'in-progress':
         color = 'bg-yellow-400';
