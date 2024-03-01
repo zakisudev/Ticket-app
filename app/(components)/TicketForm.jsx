@@ -18,7 +18,7 @@ const TicketForm = ({ oldData }) => {
     e.preventDefault();
 
     if (!oldData?._id || !oldData) {
-      const res = await fetch('/api/tickets', {
+      const res = await fetch('https://tickets.zakisu.tech/api/tickets', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -30,13 +30,16 @@ const TicketForm = ({ oldData }) => {
         throw new Error('Something went wrong');
       }
     } else {
-      const res = await fetch(`/api/tickets/${oldData?._id}`, {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ formData }),
-      });
+      const res = await fetch(
+        `https://tickets.zakisu.tech/api/tickets/${oldData?._id}`,
+        {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ formData }),
+        }
+      );
 
       if (!res.ok) {
         throw new Error('Something went wrong');

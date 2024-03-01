@@ -8,7 +8,7 @@ const DeleteBlock = ({ id }) => {
   const router = useRouter();
   const deleteTicket = async () => {
     try {
-      const res = await fetch(`/api/tickets/${id}`, {
+      const res = await fetch(`https://tickets.zakisu.tech/api/tickets/${id}`, {
         method: 'DELETE',
       });
 

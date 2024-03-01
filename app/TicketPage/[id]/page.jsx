@@ -2,7 +2,7 @@ import TicketForm from '../../(components)/TicketForm';
 
 const getTicket = async (id) => {
   try {
-    const res = await fetch(`http://localhost:3000/api/tickets/${id}`, {
+    const res = await fetch(`https://tickets.zakisu.tech/api/tickets/${id}`, {
       cache: 'no-store',
     });
 
