@@ -63,7 +63,7 @@ const TicketForm = ({ oldData }) => {
   }, [oldData]);
 
   return (
-    <div className="flex justify-center w-1/4 mx-auto my-2">
+    <div className="flex justify-center w-[400px] mx-auto my-2">
       <form onSubmit={handleSubmit} className="flex flex-col gap-1 w-full">
         <h3 className="text-center">
           {oldData?._id ? 'Update Ticket' : 'Create your ticket'}
@@ -112,7 +112,8 @@ const TicketForm = ({ oldData }) => {
               type="radio"
               id="priority-1"
               name="priority"
-              value={1} // Change the value to a number
+              value={1}
+              checked={formData.priority == 1}
               onChange={(e) =>
                 setFormData({
                   ...formData,
@@ -131,6 +132,7 @@ const TicketForm = ({ oldData }) => {
               id="priority-2"
               name="priority"
               value={2}
+              checked={formData?.priority == 2}
               onChange={(e) =>
                 setFormData({
                   ...formData,
@@ -149,6 +151,7 @@ const TicketForm = ({ oldData }) => {
               id="priority-3"
               name="priority"
               value={3}
+              checked={formData?.priority == 3}
               onChange={(e) =>
                 setFormData({
                   ...formData,
@@ -167,6 +170,7 @@ const TicketForm = ({ oldData }) => {
               id="priority-4"
               name="priority"
               value={4}
+              checked={formData?.priority == 4}
               onChange={(e) =>
                 setFormData({
                   ...formData,
@@ -185,6 +189,7 @@ const TicketForm = ({ oldData }) => {
               id="priority-5"
               name="priority"
               value={5}
+              checked={formData?.priority == 5}
               onChange={(e) =>
                 setFormData({
                   ...formData,
