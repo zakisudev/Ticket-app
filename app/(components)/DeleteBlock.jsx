@@ -12,11 +12,12 @@ const DeleteBlock = ({ id }) => {
         method: 'DELETE',
       });
 
-      if (res.status === 200) {
-        router.refresh();
-      } else {
-        console.log('Error');
+      if (!res.ok) {
+        throw new Error('Unable to delete ticket');
       }
+
+      router.push('/');
+      router.refresh();
     } catch (err) {
       console.log(err);
     }
@@ -30,4 +31,5 @@ const DeleteBlock = ({ id }) => {
     />
   );
 };
+
 export default DeleteBlock;
